@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Shinobi Clash</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Rotate warning -->
+<div id="rotateWarning">
+  <div class="rotate-icon">⟲</div>
+  <div>Rotate your device to landscape<br>for the full battle view</div>
+</div>
+
+<!-- Title / Start screen -->
+<div id="titleScreen" class="overlay">
+  <div class="title-wrap">
+    <div class="kanji-bg">忍</div>
+    <h1 class="game-title">SHINOBI <span>CLASH</span></h1>
+    <p class="game-sub">Tactical Card Duels</p>
+    <div class="menu-buttons">
+      <button id="startBtn" class="btn-primary">Begin Duel</button>
+      <button id="howToPlayBtn" class="btn-secondary">How to Play</button>
+      <button id="cardGalleryBtn" class="btn-secondary">Card Roster</button>
+      <button id="exitBtn" class="btn-secondary btn-exit">Exit</button>
+    </div>
+    <div class="title-rules">
+      <p><strong>Chakra</strong> regenerates each turn — spend it to play cards.</p>
+      <p><strong>Elements</strong> counter each other for bonus damage.</p>
+      <p>Trigger a card's <strong>Jutsu</strong> when you have enough chakra for extra effects.</p>
+    </div>
+  </div>
+</div>
+
+<!-- How to Play screen -->
+<div id="howToPlayScreen" class="overlay">
+  <div class="info-wrap">
+    <h1 class="info-title">How to Play</h1>
+    <div class="info-body">
+      <p><strong>Goal:</strong> Reduce your rival's HP to zero before they reduce yours.</p>
+      <p><strong>Chakra:</strong> You start with 10 chakra and gain +3 each turn (max 10). Every card costs chakra to play — bigger cards cost more.</p>
+      <p><strong>Clash:</strong> Pick a card from your hand. Your rival plays one too. The card with the higher ATK+DEF+PWR total wins the clash and deals damage equal to the difference.</p>
+      <p><strong>Elements:</strong> Fire beats Wind, Wind beats Earth, Earth beats Lightning, Lightning beats Water, and Water beats Fire. A favorable matchup adds +6 to your total.</p>
+      <p><strong>Jutsu:</strong> Every card has a unique jutsu that triggers automatically when played — extra damage, healing, shields, poison, guaranteed wins, and more.</p>
+      <p><strong>Deck:</strong> Your hand always has 5 unique cards drawn from the full 25-character roster — no duplicates until the deck reshuffles.</p>
+      <p><strong>Stalemate:</strong> If neither side can afford any card after chakra regen, the duel is decided by whoever has more HP remaining.</p>
+    </div>
+    <button id="closeHowToPlayBtn" class="btn-primary">Back</button>
+  </div>
+</div>
+
+<!-- Card Gallery screen -->
+<div id="cardGalleryScreen" class="overlay">
+  <div class="gallery-wrap">
+    <h1 class="info-title">Card Roster</h1>
+    <div id="galleryGrid" class="gallery-grid"></div>
+    <button id="closeGalleryBtn" class="btn-primary">Back</button>
+  </div>
+</div>
+
+<!-- End screen -->
+<div id="endScreenBox" class="overlay">
+  <div class="end-wrap">
+    <h1 id="endText">RESULT</h1>
+    <p id="endSub"></p>
+    <button onclick="restartGame()" class="btn-primary">Duel Again</button>
+  </div>
+</div>
+
+<!-- Top HUD -->
+<div class="hud">
+  <div class="hud-side player-side">
+    <div class="hud-name">YOU</div>
+    <div class="hp-bar"><div id="playerHPBar" class="hp-fill"></div><span id="playerHPText">100</span></div>
+    <div id="playerChakra" class="chakra-row"></div>
+  </div>
+
+  <div class="hud-mid">
+    <div id="turnIndicator" class="turn-indicator">Your Turn</div>
+    <div id="roundCounter" class="round-counter">Round 1</div>
+  </div>
+
+  <div class="hud-side enemy-side">
+    <div class="hud-name">RIVAL</div>
+    <div class="hp-bar enemy"><div id="enemyHPBar" class="hp-fill enemy-fill"></div><span id="enemyHPText">100</span></div>
+    <div id="enemyChakra" class="chakra-row"></div>
+  </div>
+</div>
+
+<!-- Battle arena -->
+<div class="battle-area">
+  <div class="battle-slot">
+    <div id="playerCardPlayed" class="battle-card empty">Awaiting move</div>
+    <div class="slot-label">YOUR JUTSU</div>
+  </div>
+
+  <div class="vs-mark">VS</div>
+
+  <div class="battle-slot">
+    <div id="enemyCardPlayed" class="battle-card empty">Awaiting move</div>
+    <div class="slot-label">RIVAL JUTSU</div>
+  </div>
+</div>
+
+<div id="result" class="result-text">Choose your card to attack</div>
+<div id="logFeed" class="log-feed"></div>
+
+<!-- Player hand -->
+<div id="playerHand" class="hand"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
